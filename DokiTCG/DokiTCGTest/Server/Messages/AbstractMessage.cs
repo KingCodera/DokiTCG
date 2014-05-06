@@ -8,10 +8,17 @@ namespace DokiTCGTest.Server.Messages
 {
     public abstract class AbstractMessage : IMessage
     {
-        AbstractMessage(string command, string prefix)
+        protected string message { get; set; }
+
+        protected string command { get; set; }
+
+        public AbstractMessage()
         {
-            this.command = command;
-            this.prefix = prefix;
+        }
+
+        public AbstractMessage(string message)
+        {
+            this.message = message;
         }
     }
 }

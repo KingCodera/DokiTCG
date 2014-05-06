@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace DokiTCGTest.Server.Messages
 {
-    interface IMessage
+    internal interface IMessage
     {
-        protected string command;
-        protected string prefix;
-
-        IMessage(string prefix, string command);
     }
 }

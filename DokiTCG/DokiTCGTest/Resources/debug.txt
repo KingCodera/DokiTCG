@@ -1,21 +1,27 @@
 
-Start of @debug buffer: Tue May 06 14:22:22 2014
 -> irc.rizon.sexy QUIT :
 -> irc.rizon.net CAP LS
 -> irc.rizon.net NICK Passion
 -> irc.rizon.net USER Setsuna 0 * :Setsuna
+
 <- :irc.sxci.net 439 * :Please wait while we process your connection.
 <- :irc.sxci.net NOTICE AUTH :*** Looking up your hostname...
 <- :irc.sxci.net NOTICE AUTH :*** Checking Ident
 <- :irc.sxci.net NOTICE AUTH :*** No Ident response
 <- :irc.sxci.net NOTICE AUTH :*** Found your hostname
 <- :irc.sxci.net CAP * LS :multi-prefix uhnames userhost-in-names
+
 -> irc.rizon.net CAP REQ :multi-prefix
+
 <- :irc.sxci.net CAP Passion ACK :multi-prefix
+
 -> irc.rizon.net CAP END
+
 <- :irc.sxci.net NOTICE Passion :*** Your host is masked (Rizon-BE28B886.direct-adsl.nl)
 <- :irc.sxci.net 001 Passion :Welcome to the Rizon Internet Relay Chat Network Passion
+
 -> irc.sxci.net USERHOST Passion
+
 <- :irc.sxci.net 002 Passion :Your host is irc.sxci.net[208.100.38.65/6662], running version hybrid-7.2.3+plexus-3.1.0(20130128_0-537)
 <- :irc.sxci.net 003 Passion :This server was created Jan 28 2013 at 13:15:41
 <- :irc.sxci.net 004 Passion irc.sxci.net hybrid-7.2.3+plexus-3.1.0(20130128_0-537) CDFGNRSUWXabcdfgijklnopqrsuwxyz BIMNORSabcehiklmnopqstvz Iabehkloqv
@@ -62,7 +68,9 @@ Start of @debug buffer: Tue May 06 14:22:22 2014
 <- :irc.sxci.net 376 Passion :End of /MOTD command.
 <- :Passion!~Setsuna@Rizon-BE28B886.direct-adsl.nl MODE Passion :+ix
 <- :py-ctcp!ctcp@ctcp-scanner.rizon.net PRIVMSG Passion :VERSION
+
 -> irc.sxci.net NOTICE py-ctcp :VERSION mIRC v7.32 Khaled Mardam-Bey
+
 <- :irc.sxci.net 302 Passion :Passion=+~Setsuna@81.207.88.178 
 <- :Global!service@rizon.net NOTICE Passion :[Logon News - May 21 2011] First time on Rizon? Be sure to read the FAQ! http://s.rizon.net/FAQ
 <- :Global!service@rizon.net NOTICE Passion :[Logon News - Dec 16 2013] Own a large/active channel or plan to get one going? Please read http://s.rizon.net/authline
@@ -70,30 +78,40 @@ Start of @debug buffer: Tue May 06 14:22:22 2014
 <- :NickServ!service@rizon.net NOTICE Passion :This nickname is registered and protected. If it is your
 <- :NickServ!service@rizon.net NOTICE Passion :nick, type /msg NickServ IDENTIFY password. Otherwise,
 <- :NickServ!service@rizon.net NOTICE Passion :please choose a different nick.
+
 -> irc.sxci.net PROTOCTL NAMESX
 -> irc.sxci.net PROTOCTL UHNAMES
 -> irc.sxci.net NS identify odyssey
 -> irc.sxci.net JOIN #doki-development,#Severin,#doki-tcg,#doki-tcg-arena
+
 <- :peer!service@rizon.net NOTICE Passion :For network safety, your client is being scanned for open proxies by scanner.rizon.net (80.65.51.219). This scan will not harm your computer.
 <- :Passion!~Setsuna@Rizon-BE28B886.direct-adsl.nl JOIN :#doki-development
+
 -> irc.sxci.net MODE #doki-development
+
 <- :irc.sxci.net 332 Passion #doki-development :<4!> 7FOREVER UNDER CONSTRUCTION <4!> |
 <- :irc.sxci.net 333 Passion #doki-development TheThing|24-7!Regina@dokidoki.pre.cure 1396977957
 <- :irc.sxci.net 353 Passion @ #doki-development :Passion!~Setsuna@Rizon-BE28B886.direct-adsl.nl %Chitoge-chan!~chitoge@kirisaki.chitoge &@altazure!altazure@jitsugi.wa.nigate.desu.ga.bunseki.wa.tokui.desu KamiyamaKiriko!~K@miyama.Kiriko %thingy-kun!thingy-kun@the.thing.connecting.dimensi.on &@+kb_z!kb_z@Nisi.O.isiN ~@Orillion!Orillion@Doki.Fansubs Holo|Lab!~misterano@Doki.Fansubs &@TheThing|24-7!Regina@dokidoki.pre.cure &@Kanbaru_Suruga!sen-chan@Nisi.O.isiN @Internets!internet@services.rizon.net
 <- :irc.sxci.net 353 Passion @ #doki-development :@Quotes!quotes@rizon.net &@Harbinger!Severin@Doki.Services &@DeathHere!~DeathHere@Eat.My.Railgun %Saki-chan!~Saki@The.Nationals &@[Doki]!Doki@Doki.Fansubs
 <- :irc.sxci.net 366 Passion #doki-development :End of /NAMES list.
 <- :Passion!~Setsuna@Rizon-BE28B886.direct-adsl.nl JOIN :#Severin
+
 -> irc.sxci.net MODE #Severin
+
 <- :irc.sxci.net 332 Passion #Severin :11~8â¿11~ 14[13 Mariko-sama is the queen 14] 11~8â¿11~ 14[13 sakurahime is the princess 14] 11~8â¿11~ 14[13 Orillion is the Field Marshal 14] 11~8â¿11~
 <- :irc.sxci.net 333 Passion #Severin Mariko-sama!~Mimori@Akiba.Star 1395703379
 <- :irc.sxci.net 353 Passion @ #Severin :Passion!~Setsuna@Rizon-BE28B886.direct-adsl.nl @sakurahime!~myhime~@hime.chan.desu &@Harbinger!Severin@Doki.Services +Orillion!Orillion@Doki.Fansubs &@TheKey!services@services.rizon.net
 <- :irc.sxci.net 366 Passion #Severin :End of /NAMES list.
 <- :Passion!~Setsuna@Rizon-BE28B886.direct-adsl.nl JOIN :#doki-tcg
+
 -> irc.sxci.net MODE #doki-tcg
+
 <- :irc.sxci.net 353 Passion = #doki-tcg :Passion!~Setsuna@Rizon-BE28B886.direct-adsl.nl &@[Doki]!Doki@Doki.Fansubs ~@Harbinger!Severin@Doki.Services %Orillion!Orillion@Doki.Fansubs
 <- :irc.sxci.net 366 Passion #doki-tcg :End of /NAMES list.
 <- :Passion!~Setsuna@Rizon-BE28B886.direct-adsl.nl JOIN :#doki-tcg-arena
+
 -> irc.sxci.net MODE #doki-tcg-arena
+
 <- :irc.sxci.net 353 Passion = #doki-tcg-arena :Passion!~Setsuna@Rizon-BE28B886.direct-adsl.nl %Orillion!Orillion@Doki.Fansubs &@[Doki]!Doki@Doki.Fansubs &@Harbinger!Severin@Doki.Services
 <- :irc.sxci.net 366 Passion #doki-tcg-arena :End of /NAMES list.
 <- :Passion!~Setsuna@Rizon-BE28B886.direct-adsl.nl MODE Passion :+r
@@ -102,9 +120,13 @@ Start of @debug buffer: Tue May 06 14:22:22 2014
 <- :[Doki]!Doki@Doki.Fansubs MODE #doki-development +h Passion
 <- :TheKey!services@services.rizon.net MODE #Severin +h Passion
 <- :[Doki]!Doki@Doki.Fansubs MODE #doki-tcg +ao Passion Passion
+
 -> irc.sxci.net MODE #doki-tcg
+
 <- :[Doki]!Doki@Doki.Fansubs MODE #doki-tcg-arena +ao Passion Passion
+
 -> irc.sxci.net MODE #doki-tcg-arena
+
 <- :irc.sxci.net 324 Passion #doki-development +nstz 
 <- :irc.sxci.net 329 Passion #doki-development 1387548652
 <- :irc.sxci.net 324 Passion #Severin +inpstz 
@@ -118,5 +140,17 @@ Start of @debug buffer: Tue May 06 14:22:22 2014
 <- :irc.sxci.net 324 Passion #doki-tcg-arena +mntz 
 <- :irc.sxci.net 329 Passion #doki-tcg-arena 1399296052
 <- PING :irc.sxci.net
+
 -> irc.sxci.net PONG :irc.sxci.net
-End of @debug buffer    Tue May 06 14:22:22 2014
+
+<- :Passion!~Setsuna@Laby.rinth TOPIC #Severin :11~8â¿11~ 14[13 Mariko-sama is the queen 14] 11~8â¿11~ 14[13 sakurahime is the princess 14] 11~8â¿11~ 14[13 Orillion is the Field Marshal 14] 11~8â¿11~ 14[13 Passion is the Hero 14] 11~8â¿11~
+<- :Chreyzee!~Unknown@DC46B414.E651A8C6.F0143159.IP QUIT :Quit: Chreyzee has no reason
+
+-> irc.shakeababy.net TOPIC #Severin
+<- :irc.shakeababy.net 332 Orillion #Severin :11~8â¿11~ 14[13 Mariko-sama is the queen 14] 11~8â¿11~ 14[13 sakurahime is the princess 14] 11~8â¿11~ 14[13 Orillion is the Field Marshal 14] 11~8â¿11~
+<- :irc.shakeababy.net 333 Orillion #Severin Mariko-sama!~Mimori@Akiba.Star 1395703379
+
+-> irc.shakeababy.net MODE #doki-development +o Passion
+<- :Orillion!Orillion@Doki.Fansubs MODE #doki-development +o Passion
+
+-> irc.shakeababy.net NICK :Orillion
