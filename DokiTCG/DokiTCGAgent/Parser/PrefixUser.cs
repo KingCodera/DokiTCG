@@ -26,11 +26,13 @@ namespace DokiTCGIRC.Parser
         /// </summary>
         private static string userPattern = "[^{\x01-\x09}|{\x0B-\x0C}|{\x0E-\x1F}|{\x21-\x3F}|{\x41-\xFF}]";
 
+        private static string hostEdgePattern = "[^{A-z}|{\x5B-\x60}|{\x7B-\x7D}|{\x02}|{\x03}|{\x1F}]";
+
         /// <summary>
         /// Hostname can only contain letters, digits, a "-", or a ".".
         /// TODO: Rizon servers seem to accept more characters in hostnames, namely Control Codes.
         /// </summary>
-        private static string hostPattern = "[^{A-z}|{0-9}|-|.|:]";
+        private static string hostPattern = "[^{A-z}|{0-9}|{-}|{.}|{:}|{\x02}|{\x03}|{\x1F}]";
 
         /// <summary>
         /// Nickname of the user.
@@ -192,8 +194,8 @@ namespace DokiTCGIRC.Parser
                 return false;
             }
 
-            Match first = Regex.Match(host[0].ToString(), nickFirstPattern, RegexOptions.None);
-            Match last = Regex.Match(host[host.Length - 1].ToString(), nickFirstPattern, RegexOptions.None);
+            Match first = Regex.Match(host[0].ToString(), hostEdgePattern, RegexOptions.None);
+            Match last = Regex.Match(host[host.Length - 1].ToString(), hostEdgePattern, RegexOptions.None);
             Match name = Regex.Match(host, hostPattern, RegexOptions.None);
 
             // If we find an illegal character, return false, else true.

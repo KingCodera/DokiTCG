@@ -12,8 +12,8 @@ namespace DokiTCGTest.Parser
     [TestClass]
     public class ParserTest
     {
-        public const PrefixServer PREFIX_SERVER = new PrefixServer("irc.test.com");
-        public const PrefixUser PREFIX_USER = new PrefixUser("Nickname", "Username", "host.com");
+        public PrefixServer PREFIX_SERVER;
+        public PrefixUser PREFIX_USER;
 
         public ParserTest()
         {
@@ -45,6 +45,8 @@ namespace DokiTCGTest.Parser
         [TestInitialize()]
         public void MyTestInitialize()
         {
+            PREFIX_SERVER = new PrefixServer("irc.test.com");
+            PREFIX_USER = new PrefixUser("Nickname", "Username", "host.com");
         }
 
         // Use TestCleanup to run code after each test has run
