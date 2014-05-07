@@ -25,7 +25,7 @@ namespace DokiTCGTest.Server
         {
             byte[] bytes = new Byte[1024];
 
-            IPHostEntry ipHostInfo = Dns.Resolve(Dns.GetHostName());
+            IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
             IPAddress ipAddress = ipHostInfo.AddressList[0];
             IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 6667);
 
@@ -46,6 +46,7 @@ namespace DokiTCGTest.Server
             catch (Exception e)
             {
                 // Herpaderp error.
+                Console.WriteLine("Exception occured: {0}", e.ToString());
             }
         }
 
@@ -132,10 +133,12 @@ namespace DokiTCGTest.Server
                 // Service Query and Commands.
                 case "SERVLIST": break;
                 case "SQUERY": break; // SERVICE command.
+
                 // User based queries.
                 case "WHO": break;
                 case "WHOIS": break;
                 case "WHOWAS": break;
+
                 // Miscellaneous messages.
                 case "KILL": break; // OPER command.
                 case "PING": break;
@@ -152,6 +155,8 @@ namespace DokiTCGTest.Server
                 case "WALLOPS": break; // OPER command. NOT SUPPORTED YET IN TEST!
                 case "USERHOST": break;
                 case "ISON": break;
+
+                // Unrecognised command.
                 default: break;
             }
         }
@@ -165,7 +170,8 @@ namespace DokiTCGTest.Server
             }
             catch (Exception e)
             {
-                // Herpaderp error.
+                // HerpaDerp error.
+                Console.WriteLine("Exception occured: {0}", e.ToString());
             }
         }
     }

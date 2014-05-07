@@ -51,10 +51,17 @@
   </Choose>
   <ItemGroup>
     <Compile Include="IRCTest.cs" />
+    <Compile Include="Parser\ParserTest.cs" />
+    <Compile Include="Parser\PrefixServerTest.cs" />
+    <Compile Include="Parser\PrefixUserTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server\Messages\AbstractMessage.cs" />
+    <Compile Include="Server\Messages\AbstractReply.cs" />
     <Compile Include="Server\Messages\IMessage.cs" />
+    <Compile Include="Server\Messages\IReply.cs" />
+    <Compile Include="Server\Messages\RPL_WELCOME.cs" />
     <Compile Include="Server\Server.cs" />
+    <Compile Include="String\StringTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DokiTCGAgent\DokiTCGIRC.csproj">
@@ -63,6 +70,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\ColouredNick.txt" />
     <Content Include="Resources\debug.txt" />
   </ItemGroup>
   <Choose>

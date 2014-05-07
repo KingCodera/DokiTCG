@@ -43,7 +43,18 @@
     <Compile Include="InvalidPortException.cs" />
     <Compile Include="IRC.cs" />
     <Compile Include="IRCHandler.cs" />
+    <Compile Include="Parser\Command.cs" />
+    <Compile Include="Parser\IArgs.cs" />
+    <Compile Include="Parser\ICommand.cs" />
+    <Compile Include="Parser\IPrefix.cs" />
+    <Compile Include="Parser\Message.cs" />
+    <Compile Include="Parser\MessageParser.cs" />
+    <Compile Include="Parser\ParserException.cs" />
+    <Compile Include="Parser\AbstractPrefix.cs" />
+    <Compile Include="Parser\PrefixServer.cs" />
+    <Compile Include="Parser\PrefixUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="String\ExtendedString.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

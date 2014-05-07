@@ -81,7 +81,6 @@
 
 -> irc.sxci.net PROTOCTL NAMESX
 -> irc.sxci.net PROTOCTL UHNAMES
--> irc.sxci.net NS identify odyssey
 -> irc.sxci.net JOIN #doki-development,#Severin,#doki-tcg,#doki-tcg-arena
 
 <- :peer!service@rizon.net NOTICE Passion :For network safety, your client is being scanned for open proxies by scanner.rizon.net (80.65.51.219). This scan will not harm your computer.
@@ -154,3 +153,8 @@
 <- :Orillion!Orillion@Doki.Fansubs MODE #doki-development +o Passion
 
 -> irc.shakeababy.net NICK :Orillion
+
+-> irc.shakeababy.net PART #Severin
+-> irc.shakeababy.net JOIN #Severin
+<- :Orillion!Orillion@Doki.Fansubs PART #Severin
+<- :Orillion!Orillion@Doki.Fansubs JOIN :#Severin

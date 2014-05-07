@@ -140,14 +140,23 @@ namespace System.Net
             }
         }
 
-        public void ConnectDirect(string nick, string password)
+        // Connects to a server using a nickname and username.
+        public void ConnectDirect(string nick, string username)
         {
         }
 
-        public void ConnectBNC(string password)
+        /// <summary>
+        /// Connects to a server using a password.
+        /// </summary>
+        /// <param name="password"> Password of the server. </param>
+        public void ConnectPassword(string nick, string username, string password)
         {
         }
 
+        /// <summary>
+        /// Checks if the server is connected.
+        /// </summary>
+        /// <returns> True of False. </returns>
         public Boolean IsConnected()
         {
             return !(ircSocket.Poll(1000, SelectMode.SelectRead) && ircSocket.Available == 0);
@@ -160,6 +169,8 @@ namespace System.Net
         /// <returns> True of False. </returns>
         private Boolean CheckValidPort(int port)
         {
+            // If you need to read this comment to understand what is going on, you better
+            // pick another profession.
             if (port < 0 || port > 65535)
             {
                 return false;
@@ -172,22 +183,39 @@ namespace System.Net
 
         #region Receive Data
 
-        public void Receive()
+        /// <summary>
+        /// Receives data from the socket.
+        /// This function is contineously called by ReceiveCallback.
+        /// </summary>
+        private void Receive()
         {
+            receiveDone.Reset();
             StateObject state = new StateObject();
             state.listener = ircSocket;
             state.listener.BeginReceive(state.buffer, 0, StateObject.BUFFER_SIZE, SocketFlags.None, new AsyncCallback(ReceiveCallback), state);
         }
 
+        /// <summary>
+        /// Asynchronous function handling the receiving of a message.
+        /// </summary>
+        /// <param name="ar"></param>
         private void ReceiveCallback(IAsyncResult ar)
         {
+            // Convert AsyncState to StateObject.
             StateObject state = ar.AsyncState as StateObject;
-
+            // Check number of bytes received in buffer.
             int receive = state.listener.EndReceive(ar);
+            // If we received more than 0 bytes, append string to string builder.
             if (receive > 0)
+            {
                 state.sb.Append(Encoding.UTF8.GetString(state.buffer, 0, receive));
+            }
+            // If the number of bytes received is equal to the buffer size, do another call to empty the buffer.
+            // Else notify the client that we received a message and start listening for the next.
             if (receive == StateObject.BUFFER_SIZE)
+            {
                 state.listener.BeginReceive(state.buffer, 0, StateObject.BUFFER_SIZE, SocketFlags.None, new AsyncCallback(ReceiveCallback), state);
+            }
             else
             {
                 MessageReceivedHandler handler = MessageReceived;
@@ -195,6 +223,7 @@ namespace System.Net
                 {
                     handler(this, state.sb.ToString());
                 }
+                // Empty string builder.
                 state.sb = new StringBuilder();
                 receiveDone.Set();
                 Receive();
@@ -205,35 +234,54 @@ namespace System.Net
 
         #region Send Data
 
+        /// <summary>
+        /// Sends data to the server.
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="close"></param>
         public void Send(string msg, bool close)
         {
             if (!IsConnected())
             {
+                // Can't send messages if we're not connected.
                 throw new Exception("Destination socket is not connected.");
             }
+            // Encode message in UTF8, since it's past 1960.
             byte[] response = Encoding.UTF8.GetBytes(msg);
+            // Should we close the server after sending this message? - Only used for QUIT message.
             this.close = close;
             ircSocket.BeginSend(response, 0, response.Length, SocketFlags.None, new AsyncCallback(SendCallback), ircSocket);
         }
 
+        /// <summary>
+        /// Asynchronous function handling the sending of the message.
+        /// </summary>
+        /// <param name="ar"></param>
         private void SendCallback(IAsyncResult ar)
         {
+            // Attempt to retrieve the socket from the IAsyncResult.
             try
             {
                 Socket receiver = ar.AsyncState as Socket;
+                // Wait for Send to complete.
                 receiver.EndSend(ar);
             }
             catch (SocketException se)
             {
+                // Socket has an error.
             }
             catch (ObjectDisposedException oe)
             {
+                // Son, are you trying to send messages over a socket that no longer exists?
             }
+            // Notify that message is sent via event.
             MessageSentHandler handler = MessageSent;
+            // Silly user, you can't raise an event when no one is listening.
             if (handler != null)
             {
                 handler(this, this.close);
             }
+            // Message has been sent!
             sentDone.Set();
         }
 
@@ -259,12 +307,19 @@ namespace System.Net
             }
         }
 
+        /// <summary>
+        /// Asynchronous function handling the connection to the server.
+        /// </summary>
+        /// <param name="ar"></param>
         private void OnConnectCallback(IAsyncResult ar)
         {
+            // Retrieve socket from AsyncState.
             Socket server = ar.AsyncState as Socket;
             try
             {
+                // Wait for socket to be connected.
                 server.EndConnect(ar);
+                // Notify we're connected.
                 connected.Set();
             }
             catch (SocketException e)
@@ -275,6 +330,9 @@ namespace System.Net
         }
     } /* IRC */
 
+    /// <summary>
+    /// StateObject for messages to and from the server.
+    /// </summary>
     public class StateObject
     {
         public Socket listener = null;
