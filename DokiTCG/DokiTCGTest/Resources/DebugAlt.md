@@ -145,13 +145,6 @@
 
 -> irc.sxci.net PONG :irc.sxci.net
 
-<- :Passion!~Setsuna@Laby.rinth TOPIC #Severin :11~8â¿11~ 14[13 Mariko-sama is the queen 14] 11~8â¿11~ 14[13 sakurahime is the princess 14] 11~8â¿11~ 14[13 Orillion is the Field Marshal 14] 11~8â¿11~ 14[13 Passion is the Hero 14] 11~8â¿11~
-<- :Chreyzee!~Unknown@DC46B414.E651A8C6.F0143159.IP QUIT :Quit: Chreyzee has no reason
-
--> irc.shakeababy.net TOPIC #Severin
-<- :irc.shakeababy.net 332 Orillion #Severin :11~8â¿11~ 14[13 Mariko-sama is the queen 14] 11~8â¿11~ 14[13 sakurahime is the princess 14] 11~8â¿11~ 14[13 Orillion is the Field Marshal 14] 11~8â¿11~
-<- :irc.shakeababy.net 333 Orillion #Severin Mariko-sama!~Mimori@Akiba.Star 1395703379
-
 -> irc.shakeababy.net MODE #doki-development +o Passion
 <- :Orillion!Orillion@Doki.Fansubs MODE #doki-development +o Passion
 
