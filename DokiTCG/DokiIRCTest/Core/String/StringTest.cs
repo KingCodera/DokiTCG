@@ -16,7 +16,7 @@ namespace DokiIRCTest.Core.String
         [TestMethod]
         public void StringRedTest()
         {
-            string expected = '\x03' + "04Test" + '\x03';
+            string expected = COLOUR + "04Test" + COLOUR;
             string actual = "Test".Red();
             Assert.AreEqual(expected, actual);
         }

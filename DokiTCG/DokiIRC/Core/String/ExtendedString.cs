@@ -6,34 +6,35 @@ using System.Threading.Tasks;
 
 namespace System
 {
+    public enum COLOURS
+    {
+        WHITE,
+        BLACK,
+        NAVY,
+        GREEN,
+        RED,
+        MAROON,
+        PURPLE,
+        ORANGE,
+        YELLOW,
+        LIME,
+        TEAL,
+        CYAN,
+        BLUE,
+        PINK,
+        GREY,
+        SILVER,
+        NONE
+    }
+
     public static class ExtendedString
     {
-        public enum COLOURS
-        {
-            WHITE,
-            BLACK,
-            NAVY,
-            GREEN,
-            RED,
-            MAROON,
-            PURPLE,
-            ORANGE,
-            YELLOW,
-            LIME,
-            TEAL,
-            CYAN,
-            BLUE,
-            PINK,
-            GREY,
-            SILVER,
-            NONE
-        }
-
         public const char BOLD = '\x02';
-        public const char ITALIC = '\x1F';
+        public const char ITALIC = '\x1D';
         public const char COLOUR = '\x03';
         public const char RESET = '\x0F'; // I'm not sure if I'll use this :D
         public const char REVERSE = '\x16';
+        public const char UNDERLINE = '\x1F';
 
         // This is where the magic happens.
 
@@ -69,19 +70,16 @@ namespace System
         }
 
         public static string Bold(this String arg)
-        {
-            return arg.ApplyCode(BOLD);
-        }
+        { return arg.ApplyCode(BOLD); }
 
         public static string Italic(this String arg)
-        {
-            return arg.ApplyCode(ITALIC);
-        }
+        { return arg.ApplyCode(ITALIC); }
 
         public static string Reverse(this String arg)
-        {
-            return arg.ApplyCode(REVERSE);
-        }
+        { return arg.ApplyCode(REVERSE); }
+
+        public static string Underline(this String arg)
+        { return arg.ApplyCode(UNDERLINE); }
 
         public static string Colour(this String arg, COLOURS foreground, COLOURS background = COLOURS.NONE)
         {

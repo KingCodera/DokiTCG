@@ -5,7 +5,6 @@ using System.Net;
 
 namespace DokiIRCTest
 {
-    [Ignore]
     [TestClass]
     public class IRCTest
     {
@@ -64,15 +63,15 @@ namespace DokiIRCTest
             if (msg.Contains("001"))
             {
                 client.Send("JOIN #Severin\r\n", false);
-                client.Send("PRIVMSG Orillion :Hello!\r\n", false);
             }
             if (msg.Contains("JOIN"))
             {
-                client.Send("PRIVMSG #Severin :" + '\x1F' + "キュアパッションだよ！\r\n", false);
+                string s = "キュアパッションだよ！";
+                client.Send("PRIVMSG #Severin :" + s.Red() + "\r\n", false);
                 System.Threading.Thread.Sleep(1000);
-                client.Send("PRIVMSG #Severin :" + '\x02' + "キュアパッションだよ！\r\n", false);
+                client.Send("PRIVMSG #Severin :" + s.Yellow(COLOURS.BLUE).Italic() + "\r\n", false);
                 System.Threading.Thread.Sleep(1000);
-                client.Send("PRIVMSG #Severin :" + '\x03' + "13,15キュアパッションだよ！\r\n", false);
+                client.Send("PRIVMSG #Severin :" + s.Bold().Underline().Reverse() + "\r\n", false);
             }
         }
 
