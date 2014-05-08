@@ -78,42 +78,15 @@ namespace DokiIRC.Core.Parser
         public PrefixUser(string nickname, string username, string hostname)
         {
             // Check if nickname is correct.
-            if (nickname == null)
-            {
-                throw new ArgumentNullException("Nickname can't be null.");
-            }
-
-            if (!IsValidNick(nickname))
-            {
-                throw new ArgumentException("Nickname contains illegal characters or is empty.");
-            }
-
+            IsValidNick(nickname);
             Nickname = nickname;
 
             // Check if username is correct.
-            if (username == null)
-            {
-                throw new ArgumentNullException("Username can't be null, use Prefix(string nickname) to create a Prefix without Username.");
-            }
-
-            if (!IsValidUser(username))
-            {
-                throw new ArgumentException("Username contains illegal characters or is empty.");
-            }
-
+            IsValidUser(username);
             Username = username;
 
             // Check if hostname is correct.
-            if (hostname == null)
-            {
-                throw new ArgumentNullException("Hostname can't be null, use Prefix(string nickname) to create a Prefix without Hostname.");
-            }
-
-            if (!IsValidHost(hostname))
-            {
-                throw new ArgumentException("Hostname contains illegal characters or is empty.");
-            }
-
+            IsValidHost(hostname);
             Hostname = hostname;
         }
 
@@ -151,17 +124,32 @@ namespace DokiIRC.Core.Parser
         /// <returns> True or False. </returns>
         private static bool IsValidNick(string nick)
         {
+            if (nick == null)
+            {
+                throw new ArgumentNullException("Nickname is null.");
+            }
+
             // Don't ask me how a string can have a length less than 0.
             if (nick.Length <= 0)
             {
-                return false;
+                throw new ArgumentException("Nickname length is 0.");
             }
 
             Match first = Regex.Match(nick[0].ToString(), nickFirstPattern, RegexOptions.None);
             Match name = Regex.Match(nick, nickPattern, RegexOptions.None);
 
             // If we find an illegal character, return false, else true.
-            return first.Success || name.Success ? false : true;
+            if (first.Success)
+            {
+                throw new ArgumentException("Nickname starts with an illegal character.");
+            }
+
+            if (name.Success)
+            {
+                throw new ArgumentException("Nickname contains illegal characters.");
+            }
+
+            return true;
         }
 
         /// <summary>
@@ -171,15 +159,24 @@ namespace DokiIRC.Core.Parser
         /// <returns> True or False. </returns>
         private static bool IsValidUser(string user)
         {
+            if (user == null)
+            {
+                throw new ArgumentNullException("Username is null.");
+            }
             if (user.Length <= 0)
             {
-                return false;
+                throw new ArgumentException("Username length is 0.");
             }
 
             Match name = Regex.Match(user, userPattern, RegexOptions.None);
 
             // If we find an illegal character, return false, else true.
-            return name.Success ? false : true;
+            if (name.Success)
+            {
+                throw new ArgumentException("Username contains illegal characters.");
+            }
+
+            return true;
         }
 
         /// <summary>
@@ -189,9 +186,14 @@ namespace DokiIRC.Core.Parser
         /// <returns> True or False. </returns>
         private static bool IsValidHost(string host)
         {
+            if (host == null)
+            {
+                throw new ArgumentNullException("Hostname is null.");
+            }
+
             if (host.Length <= 0)
             {
-                return false;
+                throw new ArgumentException("Hostname length is 0.");
             }
 
             Match first = Regex.Match(host[0].ToString(), hostEdgePattern, RegexOptions.None);
@@ -199,7 +201,22 @@ namespace DokiIRC.Core.Parser
             Match name = Regex.Match(host, hostPattern, RegexOptions.None);
 
             // If we find an illegal character, return false, else true.
-            return first.Success || last.Success || name.Success ? false : true;
+            if (first.Success)
+            {
+                throw new ArgumentException("Hostname starts with illegal character.");
+            }
+
+            if (last.Success)
+            {
+                throw new ArgumentException("Hostname ends with illegal character.");
+            }
+
+            if (name.Success)
+            {
+                throw new ArgumentException("Hostname contains illegal characters.");
+            }
+
+            return true;
         }
     }
 }

@@ -12,35 +12,14 @@ namespace DokiIRCTest.Core.Parser
     [TestClass]
     public class PrefixUserTest
     {
-        public PrefixUserTest()
-        {
-            //
-            // TODO: Add constructor logic here
-            //
-        }
-
         public const string NICKNAME = "Nickname";
         public const string USERNAME = "Username";
         public const string HOSTNAME = "Hostname";
-
-        public TestContext TestContext { get; set; }
 
         public PrefixUser Prefix { get; set; }
 
         #region Additional test attributes
 
-        //
-        // You can use the following additional attributes as you write your tests:
-        //
-        // Use ClassInitialize to run code before running the first test in the class
-        // [ClassInitialize()]
-        // public static void MyClassInitialize(TestContext testContext) { }
-        //
-        // Use ClassCleanup to run code after all tests in a class have run
-        // [ClassCleanup()]
-        // public static void MyClassCleanup() { }
-        //
-        // Use TestInitialize to run code before running each test
         [TestInitialize()]
         public void MyTestInitialize()
         {
@@ -60,8 +39,7 @@ namespace DokiIRCTest.Core.Parser
         public void ConstructorTest()
         {
             string expected = "Nickname!Username@Hostname";
-            PrefixUser prefix = new PrefixUser(NICKNAME, USERNAME, HOSTNAME);
-            string actual = prefix.Mask();
+            string actual = Prefix.Mask();
             Assert.AreEqual(expected, actual);
         }
 
@@ -74,32 +52,32 @@ namespace DokiIRCTest.Core.Parser
         }
 
         [TestMethod]
+        public void TypeTest()
+        {
+            PrefixType expected = PrefixType.USER;
+            PrefixType actual = Prefix.GetPrefixType();
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void NullNicknameTest()
         {
-            PrefixUser prefix = new PrefixUser(null, USERNAME, HOSTNAME);
+            Prefix = new PrefixUser(null, USERNAME, HOSTNAME);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void NullUsernameTest()
         {
-            PrefixUser prefix = new PrefixUser(NICKNAME, null, HOSTNAME);
+            Prefix = new PrefixUser(NICKNAME, null, HOSTNAME);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void NullHostnameTest()
         {
-            PrefixUser prefix = new PrefixUser(NICKNAME, USERNAME, null);
-        }
-
-        [TestMethod]
-        public void TypeTest()
-        {
-            PrefixType expected = PrefixType.USER;
-            PrefixType actual = Prefix.GetPrefixType();
-            Assert.AreEqual(expected, actual);
+            Prefix = new PrefixUser(NICKNAME, USERNAME, null);
         }
 
         // The following tests test illegal and legal characters in nicknames, usernames and hostnames.
@@ -111,7 +89,7 @@ namespace DokiIRCTest.Core.Parser
         {
             // Nickname must start with letter or special character.
             // (clearly ":" is not a special character)
-            PrefixUser prefix = new PrefixUser(":Test", USERNAME, HOSTNAME);
+            Prefix = new PrefixUser(":Test", USERNAME, HOSTNAME);
         }
 
         [TestMethod]
@@ -119,7 +97,7 @@ namespace DokiIRCTest.Core.Parser
         public void NicknameInvalidChar02Test()
         {
             // Nickname can't contain illegal characters suck as Japanese characters!
-            PrefixUser prefix = new PrefixUser("御坂", USERNAME, HOSTNAME);
+            Prefix = new PrefixUser("御坂", USERNAME, HOSTNAME);
         }
 
         [TestMethod]
@@ -129,8 +107,8 @@ namespace DokiIRCTest.Core.Parser
             char STX = '\x02'; // STX is used for bold.
             string s = STX + "04irc.net";
             string expected = NICKNAME + "!" + USERNAME + "@" + s;
-            PrefixUser prefix = new PrefixUser(NICKNAME, USERNAME, s);
-            string actual = prefix.Mask();
+            Prefix = new PrefixUser(NICKNAME, USERNAME, s);
+            string actual = Prefix.Mask();
             Assert.AreEqual(expected, actual);
         }
 
@@ -140,8 +118,8 @@ namespace DokiIRCTest.Core.Parser
             char ETX = '\x03'; // ETX is used for colour.
             string s = ETX + "irc.net";
             string expected = NICKNAME + "!" + USERNAME + "@" + s;
-            PrefixUser prefix = new PrefixUser(NICKNAME, USERNAME, s);
-            string actual = prefix.Mask();
+            Prefix = new PrefixUser(NICKNAME, USERNAME, s);
+            string actual = Prefix.Mask();
             Assert.AreEqual(expected, actual);
         }
 
@@ -151,8 +129,8 @@ namespace DokiIRCTest.Core.Parser
             char US = '\x1F'; // US is used for underline.
             string s = US + "irc.net";
             string expected = NICKNAME + "!" + USERNAME + "@" + s;
-            PrefixUser prefix = new PrefixUser(NICKNAME, USERNAME, s);
-            string actual = prefix.Mask();
+            Prefix = new PrefixUser(NICKNAME, USERNAME, s);
+            string actual = Prefix.Mask();
             Assert.AreEqual(expected, actual);
         }
 
