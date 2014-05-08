@@ -5,9 +5,7 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DokiTCGManager", "DokiTCGManager\DokiTCGManager.csproj", "{DD020469-0000-4D36-871A-4DAE05A0E7CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DokiTCGIRC", "DokiTCGAgent\DokiTCGIRC.csproj", "{A7DEFAEC-6CC2-4FF0-B8B8-96D7C8A22AC4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DokiTCGTest", "DokiTCGTest\DokiTCGTest.csproj", "{2AFF7FB8-654D-43E3-91A4-ED92FC0B063F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DokiIRCTest", "DokiTCGTest\DokiIRCTest.csproj", "{2AFF7FB8-654D-43E3-91A4-ED92FC0B063F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D2B69B94-4F75-4CE1-B280-5F84A3ABD6DE}"
 	ProjectSection(SolutionItems) = preProject
@@ -15,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D2B69B
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DokiIRC", "DokiIRC\DokiIRC.csproj", "{A7DEFAEC-6CC2-4FF0-B8B8-96D7C8A22AC4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,14 +26,14 @@ Global
 		{DD020469-0000-4D36-871A-4DAE05A0E7CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD020469-0000-4D36-871A-4DAE05A0E7CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD020469-0000-4D36-871A-4DAE05A0E7CC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A7DEFAEC-6CC2-4FF0-B8B8-96D7C8A22AC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A7DEFAEC-6CC2-4FF0-B8B8-96D7C8A22AC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A7DEFAEC-6CC2-4FF0-B8B8-96D7C8A22AC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A7DEFAEC-6CC2-4FF0-B8B8-96D7C8A22AC4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2AFF7FB8-654D-43E3-91A4-ED92FC0B063F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2AFF7FB8-654D-43E3-91A4-ED92FC0B063F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AFF7FB8-654D-43E3-91A4-ED92FC0B063F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2AFF7FB8-654D-43E3-91A4-ED92FC0B063F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7DEFAEC-6CC2-4FF0-B8B8-96D7C8A22AC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7DEFAEC-6CC2-4FF0-B8B8-96D7C8A22AC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7DEFAEC-6CC2-4FF0-B8B8-96D7C8A22AC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7DEFAEC-6CC2-4FF0-B8B8-96D7C8A22AC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
